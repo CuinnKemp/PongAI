@@ -1,6 +1,6 @@
 # PongAI
 ## Overview
-This project was the product of a competition between a few of my peers to produce AIs for pong and see who could make the best (make them vs each other). unfortunately I was the only person to produce a final product so I cannot say whether mine preformed the best (although I guess it did win by default?). My methodology and techniques used are extremely rudimentary and were based on extremely limited research, hence, there is significant room for improvement.
+This project was the product of a competition between a few of my peers to produce AIs for pong and see who could make the best (make them vs each other). Unfortunately I was the only person to produce a final product so I cannot say whether mine preformed the best (although I guess it did win by default?). My methodology and techniques used are extremely rudimentary and were based on extremely limited research, hence, there is significant room for improvement.
 
 The project is made using python and the following libraries:
   - Numpy
