@@ -65,7 +65,24 @@ class QModel:
     
 
 
-def train(numModels, epochs, display, WIN, clock):
+def show_train(numModels, epochs):
+    pygame.init()
+
+    WIN_SCALE = 0.8  # Percentage of the screen given a 16*9 aspect ratio
+    FPS = 60
+
+    # Defining colours
+    BLACK = (0, 0, 0)
+    WHITE = (255, 255, 255)
+
+    # Defining the number of pixels for the screen 1920*1080 as a default for HD
+    WIDTH, HEIGHT = 1080*WIN_SCALE, 1080*WIN_SCALE
+
+    # Setup of the screen
+    WIN = pygame.display.set_mode((WIDTH, HEIGHT))
+
+    # Setting up the clock to refresh the screen based on FPS
+    clock = pygame.time.Clock()
     # make array of model objects
     modelARRAY = np.empty(numModels, dtype=QModel)
 
@@ -94,8 +111,8 @@ def train(numModels, epochs, display, WIN, clock):
         runCHECK = 1
         while runCHECK > 0:
             runCHECK = 0
-            if display == 1:
-                clock.tick(60)
+            
+            clock.tick(60)
             
             for j in range (0, numModels):
                 if j not in noCheck:
@@ -105,13 +122,12 @@ def train(numModels, epochs, display, WIN, clock):
                     
                     else:
                         runCHECK += 1
-                
-                    if display == 1:
-                        WIN.fill([0,0,0])
-                        for j in range (0, numModels):
-                            if j not in noCheck:
-                                gameARRAY[j].drawGame(WIN)
-                        pygame.display.update()
+            
+                    WIN.fill([0,0,0])
+                    for j in range (0, numModels):
+                        if j not in noCheck:
+                            gameARRAY[j].drawGame(WIN)
+                    pygame.display.update()
         
         bestFRAME = gameARRAY[0].maxFRAME * 2**((-1 *(abs((abs(gameARRAY[j].Player1_Rectange.y - 50)) - abs(gameARRAY[j].Ball_rectangle.y-10))))/50)
 
@@ -161,7 +177,7 @@ def train(numModels, epochs):
             runCHECK = 0
             for j in range (0, numModels):
                 if j not in noCheck:
-                    gameARRAY[j].input(modelARRAY[j].run_model(gameARRAY[j].Player1_Rectange.y, gameARRAY[j].Ball_rectangle.x, gameARRAY[j].Ball_rectangle.y, gameARRAY[j].Ball_velocity[0], gameARRAY[j].Ball_velocity[1]), 0)
+                    gameARRAY[j].input(modelARRAY[j].run_model(gameARRAY[j].Player1_Rectange.y, gameARRAY[j].Ball_rectangle.x, gameARRAY[j].Ball_rectangle.y, gameARRAY[j].Ball_velocity[0], gameARRAY[j].Ball_velocity[1]), 1)
                     if gameARRAY[j].run_game() == 0:
                         noCheck.append(j)
                     

@@ -1,5 +1,4 @@
 import numpy as np
-import random
 import pygame
 
 from Game import Game
@@ -10,7 +9,7 @@ from QModel import QModel
 autoPlay = True;
 model = QModel()
 
-model.load_model("QModel (50,10).txt") # change this value to use a different model
+model.load_model("QModel (50,10)(4layers).txt") # change this value to use a different model
 
 
 # set up pygame main window
